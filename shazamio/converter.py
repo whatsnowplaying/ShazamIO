@@ -31,8 +31,7 @@ class Geo(HTTPClient):
         data = await self.request("GET", ShazamUrl.CITY_IDS, "text/plain")
         for response_country in data["countries"]:
             if country == response_country["id"]:
-                for city in response_country["cities"]:
-                    cities.append(city["name"])
+                cities.extend(city["name"] for city in response_country["cities"])
                 return cities
         raise BadCountryName("Country not found, check country name")
 

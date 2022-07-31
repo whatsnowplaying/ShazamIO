@@ -5,7 +5,7 @@ from shazamio import Serialize
 
 @pytest_asyncio.fixture(scope="session")
 def song_response():
-    response = {
+    yield {
         "matches": [
             {
                 "id": "230272433",
@@ -50,7 +50,11 @@ def song_response():
                 "image": "https://images.shazam.com/static/icons/hub/ios/v5/applemusic_{"
                 "scalefactor}.png",
                 "actions": [
-                    {"name": "apple", "type": "applemusicplay", "id": "265018693"},
+                    {
+                        "name": "apple",
+                        "type": "applemusicplay",
+                        "id": "265018693",
+                    },
                     {
                         "name": "apple",
                         "type": "uri",
@@ -80,7 +84,10 @@ def song_response():
                                 "-3235-3830-44754D6D5973&itscg=30201&app=music&itsct=Shazam_ios",
                             },
                         ],
-                        "beacondata": {"type": "open", "providername": "applemusic"},
+                        "beacondata": {
+                            "type": "open",
+                            "providername": "applemusic",
+                        },
                         "image": "https://images.shazam.com/static/icons/hub/ios/v5/overflow-open"
                         "-option_{scalefactor}.png",
                         "type": "open",
@@ -101,7 +108,10 @@ def song_response():
                                 "-3235-3830-44754D6D5973&itscg=30201&app=itunes&itsct=Shazam_ios",
                             }
                         ],
-                        "beacondata": {"type": "buy", "providername": "itunes"},
+                        "beacondata": {
+                            "type": "buy",
+                            "providername": "itunes",
+                        },
                         "image": "https://images.shazam.com/static/icons/hub/ios/v5/itunes"
                         "-overflow-buy_{scalefactor}.png",
                         "type": "buy",
@@ -247,7 +257,6 @@ def song_response():
         },
         "tagid": "89A4C33B-58C6-4A50-8475-94032FC34D06",
     }
-    yield response
 
 
 async def test_recognize_song_bug(song_response: bytes):

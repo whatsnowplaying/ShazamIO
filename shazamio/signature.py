@@ -216,8 +216,9 @@ class DecodedMessage:
         header.magic1 = 0xCAFE2580
         header.magic2 = 0x94119C00
         header.shifted_sample_rate_id = (
-            int(getattr(SampleRate, "_%s" % self.sample_rate_hz)) << 27
+            int(getattr(SampleRate, f"_{self.sample_rate_hz}")) << 27
         )
+
         header.fixed_value = (15 << 19) + 0x40000
         header.number_samples_plus_divided_sample_rate = int(
             self.number_samples + self.sample_rate_hz * 0.24

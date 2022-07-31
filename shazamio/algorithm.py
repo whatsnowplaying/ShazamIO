@@ -200,8 +200,6 @@ class SignatureGenerator:
 
         self.spread_fft_output.append(spread_last_fft)
 
-        pass
-
     def do_peak_recognition(self):
 
         fft_minus_46 = self.fft_outputs[
@@ -294,8 +292,6 @@ class SignatureGenerator:
                             band = FrequencyBand.hz_520_1450
                         elif 1450 < frequency_hz < 3500:
                             band = FrequencyBand.hz_1450_3500
-                        elif 5500 < frequency_hz <= 5500:
-                            band = FrequencyBand.hz_3500_5500
                         else:
                             continue
 

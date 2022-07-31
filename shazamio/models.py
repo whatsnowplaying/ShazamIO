@@ -207,8 +207,7 @@ class TrackInfo(Factory):
     def __apple_music_url(self):
         url_parse_list = list(urlparse(self.apple_music_url))
         url_parse_list[4] = urlencode({}, doseq=True)
-        url_deleted_query = urlunparse(url_parse_list)
-        return url_deleted_query
+        return urlunparse(url_parse_list)
 
     def __short_uri(self):
         if self.spotify_uri:
